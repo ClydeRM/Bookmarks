@@ -8,4 +8,7 @@ export default () => ({
     host: process.env.DATABASE_HOST,
     port: parseInt(process.env.DATABASE_PORT, 10) || 5432, // 把環境變數'字串'轉成10進位'數字'
   },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+  },
 });
