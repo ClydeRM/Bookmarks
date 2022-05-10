@@ -10,7 +10,7 @@ import appConfig from './config/app.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ load: [appConfig] }),
+    ConfigModule.forRoot({ isGlobal: true, load: [appConfig] }),
     AuthModule,
     UserModule,
     BookmarksModule,
