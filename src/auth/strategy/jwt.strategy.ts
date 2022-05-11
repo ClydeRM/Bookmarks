@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
   // Req.header.Authorization 被解析成物件payload傳入 validate()
-  async validate(payload: { sub: number; email: string }) {
+  async validate(payload: { sub: string; email: string }) {
     // Use payload compare to DB user credentials
     const user = await this.prismaService.user.findUnique({
       where: {
