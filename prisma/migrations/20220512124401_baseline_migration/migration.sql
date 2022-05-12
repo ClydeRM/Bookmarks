@@ -1,19 +1,6 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Bookmarks` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "Bookmarks";
-
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "users" (
-    "id" SERIAL NOT NULL,
+    "id" UUID NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "email" TEXT NOT NULL,
@@ -26,13 +13,13 @@ CREATE TABLE "users" (
 
 -- CreateTable
 CREATE TABLE "bookmarks" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "titles" TEXT NOT NULL,
     "description" TEXT,
     "link" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" UUID NOT NULL,
 
     CONSTRAINT "bookmarks_pkey" PRIMARY KEY ("id")
 );
