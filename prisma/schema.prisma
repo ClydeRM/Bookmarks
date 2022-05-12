@@ -13,7 +13,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+// User Block
+model User { 
+  // User id field
   id        String      @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -26,11 +28,12 @@ model User {
   
   bookmarks Bookmarks[]
 
+  // Map model name to DB table 
   @@map("users")
 }
 
 model Bookmarks {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -38,8 +41,12 @@ model Bookmarks {
   description String?
   link        String
 
+  // Foreign key
   userId String
+  // Cascade: 依照Table主賓關係“依序”同時刪除資料
+  // user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
   user   User @relation(fields: [userId], references: [id])
+
 
   @@map("bookmarks")
 }
